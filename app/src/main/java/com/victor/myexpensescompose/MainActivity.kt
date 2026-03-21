@@ -8,10 +8,28 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.materialIcon
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.victor.myexpensescompose.ui.theme.MyExpensesComposeTheme
 
@@ -32,19 +50,77 @@ class MainActivity : ComponentActivity() {
 
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Main(text : String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = Modifier.clickable(onClick = {
+    var mDisplayMenu by remember { mutableStateOf(false) }
 
-        })
-    ) {
 
-        Text(
-            text = text
-        )
+    Scaffold(
+
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        stringResource(id = R.string.app_name)
+                    )
+                }
+                ,
+                actions = {
+                    IconButton(
+                        onClick = {
+                            // TODO: Accion de buscar
+                        }
+
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    }
+
+                    DropdownMenu(
+                        expanded = mDisplayMenu,
+                        onDismissRequest = {
+                            mDisplayMenu = false
+                        }
+                    ) {
+                        DropdownMenuItem(
+                            text = {
+                                Text(text = "prueba dropdown")
+                            },
+                            onClick = {
+                                // TODO: Acciones pendientes de acuerdo al antecedente  
+                            }
+                        )
+
+                    }
+
+
+
+                }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    // TODO: Accion para agregar un nuevo presupeusto
+                }
+            ) {
+                Icon(Icons.Default.Add, "Nuevo presupeusto")
+            }
+        }
+
+
+    ) { paddingValues ->
+
+
+
+
     }
+
 }
+
 
 @Preview(showBackground = true)
 @Composable
