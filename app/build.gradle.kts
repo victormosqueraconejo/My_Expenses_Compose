@@ -63,4 +63,23 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    constraints {
+        val kotlinVersion = libs.versions.kotlin.get()
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion") {
+            version {
+                strictly(kotlinVersion)
+            }
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion") {
+            version {
+                strictly(kotlinVersion)
+            }
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion") {
+            version {
+                strictly(kotlinVersion)
+            }
+        }
+    }
 }

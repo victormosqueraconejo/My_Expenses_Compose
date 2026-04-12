@@ -22,7 +22,9 @@ class MainActivity : ComponentActivity() {
             applicationContext,
             AppDatabase::class.java,
             "expenses.db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     private val repository by lazy {
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyExpensesComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val homeViewModel: HomeViewModel = viewModel(factory = viewModelFactory)
                     HomeScreen(viewModel = homeViewModel)
                 }

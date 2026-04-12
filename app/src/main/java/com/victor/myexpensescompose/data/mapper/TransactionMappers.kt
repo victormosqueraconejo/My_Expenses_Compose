@@ -8,8 +8,8 @@ fun TransactionEntity.toDomain(): Transaction = Transaction(
     name = name,
     amount = amount,
     dateMillis = dateMillis,
-    category = category,
-    tag = tag,
+    //category = category,
+    //tag = tag,
     notes = notes
 )
 
@@ -18,8 +18,8 @@ fun Transaction.toEntity(): TransactionEntity = TransactionEntity(
     name = name,
     amount = amount,
     dateMillis = dateMillis,
-    category = category,
-    tag = tag,
+    //category = category,
+    //tag = tag,
     notes = notes
 )
 
